@@ -23,4 +23,8 @@ module.exports = app => {
     app.route('/client_analysis/:id')
         .all(app.config.passport.authenticate())    
         .get(admin(app.api.client_analysis.getById))
+    
+    app.route('/stats')
+        .all(app.config.passport.authenticate())
+        .get(app.api.stat.get)
 }
