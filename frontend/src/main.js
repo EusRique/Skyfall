@@ -9,6 +9,8 @@ import router from './config/router'
 
 Vue.config.productionTip = false
 
+//TEMPORARIO
+
 new Vue({
   store,
   router,
