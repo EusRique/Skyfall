@@ -11,6 +11,10 @@
                             <Stat title="Usuários Sistema" :value="stat.users"
                                 icon="fa fa-users" color="#3282cd" />
                         </div>
+                        <div class="stats">
+                            <Stat title="Cliente inadimplente" :value="stat.defaultingCustomer"
+                                icon="fa fa-users" color="#FF0000" />
+                        </div>
                     </b-tab>
                     <b-tab title="Consultar CPF">
                         <Consult />
