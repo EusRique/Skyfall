@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+
+  backend:
+    container_name: nodejs-skyfall
+    build: './backend'
+    volumes:
+      - .:/home/node/api
+      - /home/node/api/node_modules
+    depends_on:
+      - postgres-skyfall
+      - mongo-skyfall
+    networks:
+      - app-connect
+    ports:
+      - '3000:3000'
+  
+  frontend:
+    container_name: vuejs-skyfall
+    build: './frontend'
+    volumes:
+      - .:/home/node/api
+      - /home/node/api/node_modules
+    ports:
+      - '8080:8080'
+
+  mongo-skyfall:
+    container_name: mongo-skyfall
+    image: 'mongo'
+    restart: unless-stopped
+    volumes:
+      - mongo-skyfall-data:/data
+    ports:
+      - '17017:17017'
+    networks:
+      - app-connect
+
+  postgres-skyfall:
+    container_name: postgres-skyfall
+    image: postgres:11
+    restart: unless-stopped
+    volumes:
+      - postgres-skyfall-data:/data
+    environment: 
+      POSTGRES_DB: baseB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ScaniaBagualudo! 
+    networks:
+      - app-connect
+
+volumes:
+  postgres-skyfall-data:
+  mongo-skyfall-data:
+
+networks:
+  app-connect:
+      driver: bridge
