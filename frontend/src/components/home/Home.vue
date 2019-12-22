@@ -3,9 +3,20 @@
         <PageTitle icon="fa fa-home" main="Dashboard"
             sub="Analise de Crédito" />
 
-        <div class="stats">
-            <Stat title="Usuários" :value="stat.users"
-                icon="fa fa-users" color="#3282cd" />
+        <div class="admin-pages-tabs">
+            <b-card no body>
+                <b-tabs card>
+                    <b-tab title="Estatística" active>
+                        <div class="stats">
+                            <Stat title="Usuários" :value="stat.users"
+                                icon="fa fa-users" color="#3282cd" />
+                        </div>
+                    </b-tab>
+                    <b-tab title="Consultar CPF">
+                        <Consult />
+                    </b-tab>
+                </b-tabs>
+            </b-card>
         </div>
     </div>
 </template>
@@ -13,12 +24,13 @@
 <script>
 import PageTitle from '../template/PageTitle'
 import Stat from './Stat'
+import Consult from './Consult'
 import axios from 'axios'
 import { baseApiUrl } from '@/global'
 
 export default {
     name: 'Home',
-    components: { PageTitle, Stat },
+    components: { PageTitle, Stat, Consult },
     
     data: function() {
         return {
