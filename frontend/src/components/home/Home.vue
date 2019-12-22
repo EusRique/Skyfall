@@ -8,7 +8,7 @@
                 <b-tabs card>
                     <b-tab title="Estatística" active>
                         <div class="stats">
-                            <Stat title="Usuários" :value="stat.users"
+                            <Stat title="Usuários Sistema" :value="stat.users"
                                 icon="fa fa-users" color="#3282cd" />
                         </div>
                     </b-tab>
