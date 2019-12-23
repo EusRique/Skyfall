@@ -4,11 +4,12 @@ RUN mkdir -p /home/node/api/node_modules && chown -R node:node /home
 
 WORKDIR /home/node/api
 
-COPY package*.json ./
+#COPY package*.json ./
+COPY . .
 
 RUN npm install
 
-COPY --chown=node:node . .
+#COPY --chown=node:node . .
 
 USER node
 

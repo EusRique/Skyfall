@@ -5,14 +5,15 @@ services:
   backend:
     container_name: nodejs-skyfall
     build: './backend'
-    volumes:
-      - .:/home/node/api
-      - /home/node/api/node_modules
+    #volumes:
+      #- .:/home/node/api
+      #- /home/node/api/node_modules
     depends_on:
       - postgres-skyfall
       - mongo-skyfall
     networks:
       - app-connect
+      - mongo-connect
     ports:
       - '3000:3000'
   
@@ -34,7 +35,7 @@ services:
     ports:
       - '17017:17017'
     networks:
-      - app-connect
+      - mongo-connect
 
   postgres-skyfall:
     container_name: postgres-skyfall
@@ -43,7 +44,7 @@ services:
     volumes:
       - postgres-skyfall-data:/data
     environment: 
-      POSTGRES_DB: baseB
+      POSTGRES_DB: baseA
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ScaniaBagualudo! 
     networks:
@@ -55,4 +56,6 @@ volumes:
 
 networks:
   app-connect:
+      driver: bridge
+  mongo-connect:
       driver: bridge

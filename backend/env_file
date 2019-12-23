@@ -1,8 +1,8 @@
 module.exports = {
-    authSecret: 'CHAVE AUTENTICACAO',
+    authSecret: 'CHAVE QUALQUER',
 
     db: {
-        host: '127.0.0.1',
+        host: 'postgres-skyfall',
         port: 5432,
         database: '',
 		user:     '',
